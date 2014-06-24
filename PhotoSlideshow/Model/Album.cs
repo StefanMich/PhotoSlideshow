@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,21 +7,27 @@ using System.Threading.Tasks;
 
 namespace PhotoSlideshow.Model
 {
-    public class Album :Next
+    public class Album
     {
         public string Name { get; set; }
         public string Creator { get; set; }
         public Picture FrontPicture { get; set; }
-        private List<AlbumItem> items;
 
-        public List<AlbumItem> Items
+
+        OrderedList items = new OrderedList();
+
+        
+
+        public OrderedList Items
         {
             get { return items; }
+            set { items= value; }
         }
+        
 
         public Album()
         {
-            items = new List<AlbumItem>();
+            items = new OrderedList();
         }
 
         public Album(string name, string creator):this()
@@ -29,17 +36,11 @@ namespace PhotoSlideshow.Model
             this.Creator = creator;
         }
 
-        private int current = 0; 
 
-        public AlbumItem Next(bool highlight)
+        public Picture Next(bool highlight)
         {
-            if (items[current].Next(highlight) == null)
-            {
-                current++;
-                return items[current];
-            }
-            else return items[current].Next(highlight);
+            return items.Next(highlight);
         }
-        
+
     }
 }

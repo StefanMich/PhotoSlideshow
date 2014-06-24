@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PhotoSlideshow.Model
 {
-    public abstract class AlbumItem:Next
+    public abstract class AlbumItem
     {
         public string Name { get; set; }
         public string Description { get; set; }

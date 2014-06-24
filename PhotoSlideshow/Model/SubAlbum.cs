@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PhotoSlideshow.Model
 {
-    public class SubAlbum : AlbumItem, Next
+    public class SubAlbum : AlbumItem
     {
 
         private List<AlbumItem> items;
@@ -35,13 +35,23 @@ namespace PhotoSlideshow.Model
 
         public override AlbumItem Next(bool highlight)
         {
+            if (current >= items.Count)
+                return null;
 
-            if (items[current].Next(highlight) == null)
+            if (items[current] is Picture)
+                return items[current++] as Picture;
+
+            AlbumItem nextItem = items[current].Next(highlight);
+            if (nextItem is Picture)
             {
-                current++;
-                return items[current];
+                return nextItem;
             }
-            else return items[current].Next(highlight);
+            else if (nextItem == null && items[current] is SubAlbum)
+            {
+                if (current+1 >= items.Count)
+                    return null;
+                return items[++current].Next(highlight); }
+            else return nextItem;
         }
 
     }

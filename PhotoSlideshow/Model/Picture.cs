@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PhotoSlideshow.Model
 {
-    public class Picture : AlbumItem, Next
+    public class Picture : AlbumItem
     {
         public string Path { get; set; }
 
@@ -18,7 +18,7 @@ namespace PhotoSlideshow.Model
 
         public override AlbumItem Next(bool hightlight)
         {
-            return null;
+            return this;
         }
     }
 }
