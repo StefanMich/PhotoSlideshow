@@ -6,31 +6,21 @@ using System.Threading.Tasks;
 
 namespace PhotoSlideshow.Model
 {
-    public class SubAlbum
+    public class SubAlbum : AlbumItem
     {
-        public string Name { get; set; }
-        public string Description { get; set; }
+        
+        private List<AlbumItem> items;
 
-        private List<SubAlbum> subAlbumCollection;
-
-        public List<SubAlbum> SubAlbumCollection
+        public List<AlbumItem> Items
         {
-            get { return subAlbumCollection; }
-        }
-
-        private List<Picture> pictures;
-
-        public List<Picture> Pictures
-        {
-            get { return pictures; }
+            get { return items; }
         }
 
         public Picture FrontPicture { get; set; }
 
         public SubAlbum()
         {
-            subAlbumCollection = new List<SubAlbum>();
-            pictures = new List<Picture>();
+            items = new List<AlbumItem>();
         }
 
         public SubAlbum(string name, string description):this()

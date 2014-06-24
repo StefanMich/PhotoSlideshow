@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace PhotoSlideshow.Model
 {
-    public class Picture
+    public class Picture : AlbumItem
     {
-        public string Text { get; set; }
-        public bool IsHightlight { get; set; }
-
         public string Path { get; set; }
 
         public Picture(string path)

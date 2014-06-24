@@ -11,16 +11,16 @@ namespace PhotoSlideshow.Model
         public string Name { get; set; }
         public string Creator { get; set; }
         public Picture FrontPicture { get; set; }
-        private List<SubAlbum> subAlbums;
+        private List<AlbumItem> items;
 
-        public List<SubAlbum> SubAlbums
+        public List<AlbumItem> Items
         {
-            get { return subAlbums; }
+            get { return items; }
         }
 
         public Album()
         {
-            subAlbums = new List<SubAlbum>();
+            items = new List<AlbumItem>();
         }
 
         public Album(string name, string creator):this()
@@ -28,6 +28,15 @@ namespace PhotoSlideshow.Model
             this.Name = name;
             this.Creator = creator;
         }
+
+        
+
+        /*public Picture Next(bool highlight)
+        { 
+
+
+            return 
+        }*/
         
     }
 }
