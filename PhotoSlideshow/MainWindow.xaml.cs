@@ -22,10 +22,11 @@ namespace PhotoSlideshow
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Album album;
         public MainWindow()
         {
             InitializeComponent();
-            Album album = new Album("Rom 2013", "Stefan Micheelsen");
+            album = new Album("Rom 2013", "Stefan Micheelsen");
             SubAlbum dag1 = new SubAlbum("Dag 1", "Pantheon og Vatikanet");
             SubAlbum dag2 = new SubAlbum("Dag 2", "Colosseum og Forum Romanum");
 
@@ -45,12 +46,7 @@ namespace PhotoSlideshow
             AddPicturesToSubAlbum(Colosseum, "dag2", "colosseum");
             AddPicturesToSubAlbum(ForumRomanum, "dag2", "Forum Romanum");
 
-            BitmapImage image = new BitmapImage();
-            image.BeginInit();
-            image.UriSource = new Uri((((album.Items[0] as SubAlbum).Items[0] as SubAlbum).Items[0] as Picture).Path);
-            image.EndInit();
-
-            this.Picture.Source = image;
+            Button_Click(this, null);
         }
 
         private static void AddPicturesToSubAlbum(SubAlbum album,string day, string subalbum)
@@ -63,7 +59,13 @@ namespace PhotoSlideshow
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            BitmapImage image = new BitmapImage();
+            image.BeginInit();
+            //image.UriSource = new Uri((((album.Items[0] as SubAlbum).Items[0] as SubAlbum).Items[0] as Picture).Path);
+            image.UriSource = new Uri((album.Next(false) as Picture).Path);
+            image.EndInit();
 
+            this.Picture.Source = image;
         }
     }
 }
