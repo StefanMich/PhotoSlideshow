@@ -45,7 +45,12 @@ namespace PhotoSlideshow
             AddPicturesToSubAlbum(Colosseum, "dag2", "colosseum");
             AddPicturesToSubAlbum(ForumRomanum, "dag2", "Forum Romanum");
 
-            
+            BitmapImage image = new BitmapImage();
+            image.BeginInit();
+            image.UriSource = new Uri(album.SubAlbums[0].SubAlbumCollection[0].Pictures[0].Path);
+            image.EndInit();
+
+            this.Picture.Source = image;
         }
 
         private static void AddPicturesToSubAlbum(SubAlbum Pantheon,string day, string subalbum)
@@ -54,6 +59,11 @@ namespace PhotoSlideshow
             {
                 Pantheon.Pictures.Add(new Picture(picture));
             }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
