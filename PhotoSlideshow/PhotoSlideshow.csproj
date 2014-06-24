@@ -69,6 +69,7 @@
   <ItemGroup>
     <Compile Include="Model\Album.cs" />
     <Compile Include="Model\AlbumItem.cs" />
+    <Compile Include="Model\Next.cs" />
     <Compile Include="Model\Picture.cs" />
     <Compile Include="Model\SubAlbum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">

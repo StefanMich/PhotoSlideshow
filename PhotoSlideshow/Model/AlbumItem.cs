@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace PhotoSlideshow.Model
 {
-    public class AlbumItem
+    public abstract class AlbumItem:Next
     {
         public string Name { get; set; }
         public string Description { get; set; }
         public bool IsHightlight { get; set; }
+
+        public abstract AlbumItem Next(bool highlight);
     }
 }
