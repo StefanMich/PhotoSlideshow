@@ -34,11 +34,11 @@ namespace PhotoSlideshow
             SubAlbum Colosseum = new SubAlbum("Colosseum", "Colosseum");
             SubAlbum ForumRomanum = new SubAlbum("Forum Romanum", "Forum Romanum");
 
-            album.SubAlbums.Add(dag1);
-            album.SubAlbums.Add(dag2);
+            album.Items.Add(dag1);
+            album.Items.Add(dag2);
 
-            dag1.SubAlbumCollection.AddRange(new List<SubAlbum> { Pantheon, Vatikanet });
-            dag2.SubAlbumCollection.AddRange(new List<SubAlbum> { Colosseum, ForumRomanum });
+            dag1.Items.AddRange(new List<SubAlbum> { Pantheon, Vatikanet });
+            dag2.Items.AddRange(new List<SubAlbum> { Colosseum, ForumRomanum });
 
             AddPicturesToSubAlbum(Pantheon, "dag1","pantheon");
             AddPicturesToSubAlbum(Vatikanet, "dag1", "vatikanet");
@@ -47,17 +47,17 @@ namespace PhotoSlideshow
 
             BitmapImage image = new BitmapImage();
             image.BeginInit();
-            image.UriSource = new Uri(album.SubAlbums[0].SubAlbumCollection[0].Pictures[0].Path);
+            image.UriSource = new Uri((((album.Items[0] as SubAlbum).Items[0] as SubAlbum).Items[0] as Picture).Path);
             image.EndInit();
 
             this.Picture.Source = image;
         }
 
-        private static void AddPicturesToSubAlbum(SubAlbum Pantheon,string day, string subalbum)
+        private static void AddPicturesToSubAlbum(SubAlbum album,string day, string subalbum)
         {
             foreach (string picture in Directory.GetFiles(@"C:\Users\Stefan\Google Drev\Programmering\Projects\PhotoSlideshow\test\" + day + "\\" + subalbum + "\\"))
             {
-                Pantheon.Pictures.Add(new Picture(picture));
+                album.Items.Add(new Picture(picture));
             }
         }
 
