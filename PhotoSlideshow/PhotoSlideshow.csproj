@@ -67,6 +67,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\Album.cs" />
+    <Compile Include="Model\Picture.cs" />
+    <Compile Include="Model\SubAlbum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
